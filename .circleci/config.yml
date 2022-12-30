@@ -69,7 +69,7 @@ jobs:
 
   test-frontend:
     docker:
-      cimg/node:13.8.0
+      - image: cimg/node:13.8.0
     steps:
       - checkout
       - restore_cache:
@@ -81,10 +81,9 @@ jobs:
              npm install
              npm test
 
-                
   test-backend:
     docker:
-      cimg/node:13.8.0
+      - image: cimg/node:13.8.0
     steps:
       - checkout
       - restore_cache:
