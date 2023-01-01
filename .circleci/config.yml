@@ -233,12 +233,12 @@ jobs:
       - run:
           name: Run migrations
           command: |
-            # cd backend
-            # npm install
-            # npm run migrations             
             cd backend
             npm install
-            npm run migrations > migrations_dump.txt
+            npm run migrations             
+            # cd backend
+            # npm install
+            # npm run migrations > migrations_dump.txt
             
       - run:
           name: Send migration results to kvdb.io
@@ -249,7 +249,7 @@ jobs:
               curl https://kvdb.io/MrpnykB4w5qDX9CrBD8Cg3/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
 
-            curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d 'test kvdb'
+            curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d 'test kvdjjkb'
 
       - destroy-environment
       - revert-migrations      
