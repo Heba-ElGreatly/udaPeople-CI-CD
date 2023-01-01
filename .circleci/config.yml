@@ -235,7 +235,6 @@ jobs:
           command: |
             cd backend
             npm install
-            # ts-node -r dotenv/config node_modules/.bin/typeorm migration:run
             npm run migrations > migrations_dump.txt
             
       - run:
@@ -243,7 +242,8 @@ jobs:
           command: |
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-              curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d 'test kvdb'
+              # curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d 'test kvdb'
+              curl https://kvdb.io/MrpnykB4w5qDX9CrBD8Cg3/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
 
       - destroy-environment
