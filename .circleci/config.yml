@@ -236,7 +236,7 @@ jobs:
             cd backend
             npm install
             # ts-node -r dotenv/config node_modules/.bin/typeorm migration:run
-            npm run migrations >> migrations_dump.txt
+            npm run migrations > migrations_dump.txt
             cat migrations_dump.txt
             # ansible-playbook -i migrations_dump.txt npm run migrations
             
