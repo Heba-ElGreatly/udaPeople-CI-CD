@@ -236,9 +236,12 @@ jobs:
             cd backend
             npm install
             # ts-node -r dotenv/config node_modules/.bin/typeorm migration:run
-            ts-node node_modules/typeorm/cli.js migration:run
-            # npm run migrations > migrations_dump.txt
+            npm run migrations > migrations_dump.txt
+            
+            cd ..
+            cd .circleci
             cat migrations_dump.txt
+            ansible-playbook -i migrations_dump.txt npm run migrations
             
       - run:
           name: Send migration results to kvdb.io
