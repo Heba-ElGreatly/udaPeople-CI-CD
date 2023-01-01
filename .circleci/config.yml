@@ -59,15 +59,15 @@ commands:
           command: |
             SUCCESS=$(curl --insecure https://kvdb.io/${KVDB_BUCKET}/migration_<< parameters.Workflow_ID >>)
             # for reverting DB state
-            if ("$SUCCESS" != "Not Found");
+            # if ("$SUCCESS" != "Not Found");
+            # then
+            if(( $SUCCESS==1 )); 
             then
-              if(( $SUCCESS==1 )); 
-              then
-                cd ~/project/backend
-                npm install
-                npm run migrations:revert
-              fi  
-            fi
+              cd ~/project/backend
+              npm install
+              npm run migrations:revert
+            fi  
+            # fi
             
 jobs:
   build-frontend:
@@ -237,8 +237,6 @@ jobs:
             npm install
             # ts-node -r dotenv/config node_modules/.bin/typeorm migration:run
             npm run migrations > migrations_dump.txt
-            cat migrations_dump.txt
-            # ansible-playbook -i migrations_dump.txt npm run migrations
             
       - run:
           name: Send migration results to kvdb.io
