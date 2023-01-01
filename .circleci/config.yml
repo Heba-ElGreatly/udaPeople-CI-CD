@@ -226,7 +226,7 @@ jobs:
 
   run-migrations:
     docker:
-      - image: cimg/node:14.20
+      - image: cimg/node:13.8.0
     steps:
       - checkout
       - install_awscli
