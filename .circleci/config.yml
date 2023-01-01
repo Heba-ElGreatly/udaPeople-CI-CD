@@ -249,7 +249,7 @@ jobs:
               curl https://kvdb.io/MrpnykB4w5qDX9CrBD8Cg3/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
 
-            curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d 'test kvdjjkb'
+            # curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d 'test kvdjjkb'
 
       - destroy-environment
       - revert-migrations      
